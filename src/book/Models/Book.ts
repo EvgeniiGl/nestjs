@@ -1,54 +1,30 @@
-// import {Document, model, Schema} from "mongoose"
+import {Prop, Schema, SchemaFactory} from "@nestjs/mongoose";
+import {Document} from "mongoose";
 
-export interface IBook {
-    title: string,
-    description: string,
-    authors: string,
-    favorite: string,
-    fileCover: string,
-    fileName?: string,
-    fileBook?: string,
+@Schema()
+export class Book {
+    @Prop({required: true})
+    public title: string;
+
+    @Prop()
+    public authors: string;
+
+    @Prop()
+    public description: string;
+
+    @Prop()
+    public favorite: string;
+
+    @Prop()
+    public fileBook: string;
+
+    @Prop()
+    public fileCover: string;
+
+    @Prop()
+    public fileName: string;
 }
 
-export class Book implements IBook {
-    authors: string;
-    description: string;
-    favorite: string;
-    fileBook: string;
-    fileCover: string;
-    fileName: string;
-    title: string;
-}
+export type BookDocument = Book & Document;
 
-// export const BookSchema: Schema<IBook> = new Schema({
-//     title: {
-//         type: String,
-//         required: true,
-//     },
-//     description: {
-//         type: String,
-//         default: "",
-//     },
-//     authors: {
-//         type: String,
-//         default: "",
-//     },
-//     favorite: {
-//         type: String,
-//         default: "",
-//     },
-//     fileCover: {
-//         type: String,
-//         default: "",
-//     },
-//     fileName: {
-//         type: String,
-//         default: "",
-//     },
-//     fileBook: {
-//         type: String,
-//         default: "",
-//     },
-// });
-//
-// export const BookModel  = model<IBook>("Book", BookSchema);
+export const BookSchema = SchemaFactory.createForClass(Book);
