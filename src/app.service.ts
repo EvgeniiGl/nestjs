@@ -8,8 +8,8 @@ export class AppService {
 
     onModuleInit() {
         console.log(`Initialization...`);
-        this.githubService.repositories('some')
-        this.githubService.projects('some')
+        // this.githubService.repositories('some')
+        // this.githubService.projects('some')
     }
 
     getHello(): string {

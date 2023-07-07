@@ -1,5 +1,10 @@
-export interface CreateBookDto {
-    id: string
-    title: string
-    description?: string
+import { IsString, IsDefined} from "class-validator";
+
+export class CreateBookDto {
+    @IsString()
+    @IsDefined()
+    title: string;
+
+    @IsString()
+    description?: string;
 }
