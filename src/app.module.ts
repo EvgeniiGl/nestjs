@@ -8,6 +8,8 @@ import { BookController } from './book/book.controller';
 import { BooksController } from './book/books.controller';
 import { GithubService } from './github/github.service';
 import {HttpModule} from "@nestjs/axios";
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
     imports: [
@@ -15,6 +17,8 @@ import {HttpModule} from "@nestjs/axios";
         MongooseModule.forRoot(process.env.ME_CONFIG_MONGODB_CONNECT),
         BookModule,
         HttpModule,
+        AuthModule,
+        UsersModule,
     ],
     controllers: [AppController, BookController, BooksController],
     providers: [AppService, GithubService],
