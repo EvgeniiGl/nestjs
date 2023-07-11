@@ -1,17 +1,18 @@
-import {Controller, Get, HttpException, UseFilters} from '@nestjs/common';
+import {Controller, Get, HttpException, UseFilters, UseGuards} from '@nestjs/common';
 import {BookService} from "./book.service";
 import {BookDocument} from "./Models/Book";
 import {HttpExceptionFilter} from "../exception/http.exception.filter";
+import {JwtAuthGuard} from "../auth/jwt-auth.guard";
 
 @Controller('books')
 export class BooksController {
     constructor(private bookService: BookService) {
     }
 
+    @UseGuards(JwtAuthGuard)
     @UseFilters(HttpExceptionFilter)
     @Get()
     public fetchAll(): Promise<BookDocument[]> {
-        throw new HttpException('fdfdsf', 401)
         return this.bookService.fetchAll();
     }
 
