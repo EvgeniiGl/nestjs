@@ -1,4 +1,4 @@
-import {Body, Param, Controller, Delete, Put, Post, UsePipes, ParseIntPipe} from '@nestjs/common';
+import {Body, Param, Controller, Delete, Put, Post, UsePipes, ParseIntPipe, Get} from '@nestjs/common';
 import {BookService} from "./book.service";
 import {Book, BookDocument} from "./Models/Book";
 import {CreateBookDto} from "./interfaces/dto/create.book.dto";
