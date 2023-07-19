@@ -10,6 +10,7 @@ import { GithubService } from './github/github.service';
 import {HttpModule} from "@nestjs/axios";
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import {BookService} from "./book/book.service";
 
 @Module({
     imports: [

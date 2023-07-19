@@ -1,15 +1,26 @@
 import {Injectable} from '@nestjs/common';
 import {Book, BookDocument} from "./Models/Book";
-import {InjectConnection, InjectModel} from "@nestjs/mongoose";
+import {InjectConnection, InjectModel, Prop} from "@nestjs/mongoose";
 import {Connection, Model} from "mongoose";
 import {CreateBookDto} from "./interfaces/dto/create.book.dto";
 
 @Injectable()
 export class BookService {
 
+    private list: Book[] = [
+        {
+            title: '12345',
+            authors: 'string',
+            description: 'string',
+            favorite: 'string',
+            fileBook: 'string',
+            fileCover: 'string',
+            fileName: 'string',
+        }
+    ];
+
     constructor(
-        @InjectModel(Book.name) private BookModel: Model<BookDocument>,
-        @InjectConnection() private connection: Connection) {
+        @InjectModel(Book.name) private BookModel: Model<BookDocument>) {
     }
 
     public fetchAll(): Promise<BookDocument[]> {
@@ -36,4 +47,13 @@ export class BookService {
 
         return true;
     }
+
+    public add(book: Book) {
+        this.list.push(book)
+    }
+
+    public getAll(): Book[] {
+        return this.list
+    }
+
 }
