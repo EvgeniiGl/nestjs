@@ -15,7 +15,7 @@ module.exports = {
         node: true,
         jest: true,
     },
-    "indent": ["error", 2],
+    indent: ["error", 2],
     ignorePatterns: ['.eslintrc.js'],
     rules: {
         '@typescript-eslint/interface-name-prefix': 'off',
