@@ -10,7 +10,8 @@ import { GithubService } from './github/github.service';
 import {HttpModule} from "@nestjs/axios";
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import {BookService} from "./book/book.service";
+import { BookCommentsModule } from './book-comments/book-comments.module';
+import {BookCommentsGateway} from "./book-comments/book-comments.gateway";
 
 @Module({
     imports: [
@@ -20,9 +21,10 @@ import {BookService} from "./book/book.service";
         HttpModule,
         AuthModule,
         UsersModule,
+        BookCommentsModule,
     ],
     controllers: [AppController, BookController, BooksController],
-    providers: [AppService, GithubService],
+    providers: [AppService, GithubService, BookCommentsGateway],
 })
 
 export class AppModule {}

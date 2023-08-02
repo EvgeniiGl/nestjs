@@ -1,4 +1,4 @@
-import {Controller, Get, Post, UseGuards, Request, Body} from '@nestjs/common';
+import {Controller, Get, Post, UseGuards, Request, Body, Render} from '@nestjs/common';
 import {AppService} from './app.service';
 import {UsersGuard} from "./users/users.guard";
 import {JwtAuthGuard} from "./auth/jwt-auth.guard";
@@ -18,8 +18,9 @@ export class AppController {
     }
 
     @Get()
-    getHello(): string {
-        return this.appService.getHello();
+    @Render('index')
+    root() {
+        return { message: 'Hello world!' };
     }
     
     @Post('signin')
